@@ -382,7 +382,7 @@ const ProductList = () => {
       <Backdrop sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }} open={backdropOpen}>
         <CircularProgress color="inherit" />
       </Backdrop>
-      <Container maxWidth="xl" sx={{ px: { xs: 0, md: 3 } }}>
+      <Container maxWidth="xl" sx={{ px: { xs: 0, md: 3 } ,mt: {xs:0 ,md: 7} }}>
         <Grid container>
           {/* Left-side Drawer for larger screens */}
           {(offerProducts === null && relatedProducts === null && newProducts === null) && (
