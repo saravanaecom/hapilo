@@ -55,7 +55,10 @@ export default function AppHeader() {
   const toggleDrawer = (open) => () => {
     setDrawerOpen((open) => !open);
   };
-
+  
+  const closeDrawer = () => {
+    setDrawerOpen(false); // Close the drawer
+  };
   // Authentication right sidebar
   const handleAuthDrawerToggle = (event) => {
     if (event === false) {
@@ -135,6 +138,7 @@ export default function AppHeader() {
           transition: 'all 1.5s ease',
           zindex: 9999,
           top: 0,
+          height:{xs:'130px'},
           height: '100px',
           '@media (max-width: 600px)': {
             position: 'relative',
@@ -146,10 +150,10 @@ export default function AppHeader() {
           <Grid container alignItems="center" justifyContent="space-between">
 
             {/* Logo Section */}
-            <Grid item xs={6} sm={2} md={1.5} >
+            <Grid item xs={6} sm={2} md={1.5} sx={{ position:{ xs: 'relative' }, top: { xs: '20px', sm: '0px' }, zIndex: 900 }}>
               <Link to={"/"}> <AppLogo /></Link>
             </Grid>
-            <Grid item xs={6} sx={{ display: { xs: 'flex', sm: 'none' }, justifyContent: 'flex-end' }}>
+            <Grid item xs={6} sx={{ display: { xs: 'flex', sm: 'none' }, justifyContent: 'flex-end', position:{ xs: 'relative' }, top: { xs: '18px', sm: '0px' } }}>
               <IconButton edge="end" color="inherit" aria-label="menu" onClick={toggleDrawer(true)}>
                 <MenuIcon sx={{ width: '30px', height: '30px' }} />
               </IconButton>
@@ -176,6 +180,23 @@ export default function AppHeader() {
         
             </Grid>
 
+
+
+<Grid
+              item
+              xs={12} sm={6} md={5.5}
+              sx={{
+                display: { sm: 'inline-block' ,md:'none'},
+                alignItems: 'center',
+                mt: { xs: 1, sm: 0 },
+                position: 'relative', // Remove fixed positioning for mobile
+           
+                width: '100%',
+                zIndex: 9,
+              }}
+            >
+              <AppSearchBox/>              
+            </Grid>
 
 
 
@@ -262,7 +283,15 @@ export default function AppHeader() {
 
         {/* Drawer for Mobile Navigation */}
         <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
-          {drawerContent}
+          <Box
+            sx={{
+              width: 230, // Adjust the width of the drawer
+              padding: 1,
+            }}
+          >
+            {/* Add TopCategory inside the Drawer */}
+            <TopCategory isMobile={true}  closeDrawer={closeDrawer} />
+          </Box>
         </Drawer>
         <AppRegister RegisterDrawerOpen={registerDrawerOpen} setLoginDrawerOpen={setLoginDrawerOpen} handleAuthDrawerToggle={handleAuthDrawerToggle} />
         <AppLogin LoginDrawerOpen={loginDrawerOpen} setRegisterDrawerOpen={setRegisterDrawerOpen} setForgetPasswordDrawerOpen={setForgetPasswordDrawerOpen} handleAuthDrawerToggle={handleAuthDrawerToggle} />

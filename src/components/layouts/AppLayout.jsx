@@ -79,7 +79,8 @@ const AppLayout = (props) => {
     <>
       <TopOffershow/>
       <AppHeader style={{ zIndex: 10 }} />
-     
+    
+
       {children}
       <Box sx={{ borderTop: '1px solid lightgray', borderBottom: '1px solid lightgray', display: 'none' }}>
         <Container maxWidth="xl" sx={{ py: 3 }}>
