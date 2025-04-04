@@ -229,7 +229,7 @@ const ProductCard = ({ get_fav_lists, product, isLoading, offerProducts, related
       value={product?.Productid ? product.Productid : product?.Id}
       sx={{
         width: { 
-          xs: offerProducts === null && relatedProducts === null && newProducts === null ? 155 : 175, 
+          xs: offerProducts === null && relatedProducts === null && newProducts === null ? 175 : 175, 
           sm: 220, 
           md: 260, 
           lg: 260 

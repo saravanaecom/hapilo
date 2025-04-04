@@ -129,7 +129,7 @@ export default function AppHeader() {
   return (
     <>
       <AppBar
-        position='relative'
+        position='fixed'
         color="transparent"
         elevation={isScrolled ? 5 : 10}
 
