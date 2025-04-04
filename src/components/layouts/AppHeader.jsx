@@ -55,10 +55,7 @@ export default function AppHeader() {
   const toggleDrawer = (open) => () => {
     setDrawerOpen((open) => !open);
   };
-  
-  const closeDrawer = () => {
-    setDrawerOpen(false); // Close the drawer
-  };
+
   // Authentication right sidebar
   const handleAuthDrawerToggle = (event) => {
     if (event === false) {
@@ -124,6 +121,10 @@ export default function AppHeader() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [cartItems]);
+
+  const closeDrawer = () => {
+    setDrawerOpen(false); // Close the drawer
+  };
 
   return (
     <>
@@ -283,12 +284,13 @@ export default function AppHeader() {
 
         {/* Drawer for Mobile Navigation */}
         <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
-          <Box
-            sx={{
-              width: 230, // Adjust the width of the drawer
-              padding: 1,
-            }}
-          >
+    <Box
+      sx={{
+        width: 230, // Adjust the width of the drawer
+        padding: 1,
+      }}
+    >
+      {drawerContent}
             {/* Add TopCategory inside the Drawer */}
             <TopCategory isMobile={true}  closeDrawer={closeDrawer} />
           </Box>
